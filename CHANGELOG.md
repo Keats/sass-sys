@@ -1,4 +1,9 @@
-## 0.2.0 (unreleased)
+## 0.3.0 (unreleased)
+
+- Update libsass to 3.4.5, for real this time
+- Update bindings
+
+## 0.2.0 (Jun 01 2017)
 
 - Update libsass to 3.4.5
 

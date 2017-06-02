@@ -16,7 +16,7 @@ install:
 build: false
 
 test_script:
-    - cargo build -vv
+    - cargo build
 
 cache:
 - C:\Users\appveyor\.cargo\registry

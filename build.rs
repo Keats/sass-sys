@@ -1,8 +1,9 @@
+extern crate bindgen;
 extern crate pkg_config;
 
 use std::env;
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::io::{self, Write};
 
@@ -11,7 +12,37 @@ static PROJECT: &'static str = "libsass";
 static ARCHIVE: &'static str = "libsass.a";
 static ARCHIVE_WINDOWS: &'static str = "libsass.lib";
 
+fn write_bindings() {
+    // The bindgen::Builder is the main entry point
+    // to bindgen, and lets you build up options for
+    // the resulting bindings.
+    let bindings = bindgen::Builder::default()
+        // Do not generate unstable Rust code that
+        // requires a nightly rustc and enabling
+        // unstable features.
+        .no_unstable_rust()
+        // The input header we would like to generate
+        // bindings for.
+        .header("libsass/include/sass.h")
+        // https://github.com/servo/rust-bindgen/issues/550
+        .hide_type("max_align_t")
+        // Finish the builder and generate the bindings.
+        .generate()
+        // Unwrap the Result and panic on failure.
+        .expect("Unable to generate bindings");
+
+    // Write the bindings to the $OUT_DIR/bindings.rs file.
+    let out_path = PathBuf::from("src");
+    bindings
+        .write_to_file(out_path.join("bindings.rs"))
+        .expect("Couldn't write bindings!");
+}
+
 fn main() {
+    // Uncomment below if you want to recreate bindings, ie when updating
+    // libsass
+    // write_bindings();
+
     // See if sass is already setup
     match pkg_config::find_library("sass") {
         Ok(_) => return,
