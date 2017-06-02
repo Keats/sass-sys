@@ -43,6 +43,8 @@ fn main() {
     // libsass
     // write_bindings();
 
+    let _ = Command::new("git").args(&["submodule", "update", "--init"]).status();
+
     // See if sass is already setup
     match pkg_config::find_library("sass") {
         Ok(_) => return,
