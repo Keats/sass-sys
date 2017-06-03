@@ -55,7 +55,9 @@ extern "C" {
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct Sass_Value([u8; 0]);
+pub struct Sass_Value {
+    _unused: [u8; 0],
+}
 #[repr(u32)]
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
 pub enum Sass_Tag {
@@ -282,19 +284,29 @@ extern "C" {
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct Sass_Import([u8; 0]);
+pub struct Sass_Import {
+    _unused: [u8; 0],
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct Sass_Options([u8; 0]);
+pub struct Sass_Options {
+    _unused: [u8; 0],
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct Sass_Compiler([u8; 0]);
+pub struct Sass_Compiler {
+    _unused: [u8; 0],
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct Sass_Importer([u8; 0]);
+pub struct Sass_Importer {
+    _unused: [u8; 0],
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct Sass_Function([u8; 0]);
+pub struct Sass_Function {
+    _unused: [u8; 0],
+}
 pub type Sass_Import_Entry = *mut Sass_Import;
 pub type Sass_Import_List = *mut *mut Sass_Import;
 pub type Sass_Importer_Entry = *mut Sass_Importer;
@@ -443,13 +455,19 @@ extern "C" {
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct Sass_Context([u8; 0]);
+pub struct Sass_Context {
+    _unused: [u8; 0],
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct Sass_File_Context([u8; 0]);
+pub struct Sass_File_Context {
+    _unused: [u8; 0],
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct Sass_Data_Context([u8; 0]);
+pub struct Sass_Data_Context {
+    _unused: [u8; 0],
+}
 #[repr(u32)]
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
 pub enum Sass_Compiler_State {
